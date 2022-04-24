@@ -1,0 +1,105 @@
+:root {
+  /* General Properties */
+  --primary-color: rgb(118, 39, 255);
+  --bg-background: #0d121b;
+  --light: rgb(226, 234, 237);
+  --white: #fff;
+
+  /* Switch Properties  */
+  --switch-width: 75px;
+  --switch-height: 40px;
+  --switch-circle-size: 32px;
+  --switch-circle-padding: 4px;
+  --switch-circle-bg: #fff;
+  --switch-circle-on-bg: #fff;
+  --switch-bg: #c9c9c9;
+  --switch-on-bg: #4cd864;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+  overflow: none;
+  flex-direction: column;
+  font-family: "Poppins", "Franklin Gothic Medium", "Arial Narrow", Arial,
+    sans-serif;
+  background: var(--bg-background);
+  color: var(--light);
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  padding: 0 1rem;
+}
+
+ul {
+  list-style: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+ul li {
+  margin: 20px;
+}
+
+label.label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+input[type="checkbox"] {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.switch {
+  display: flex;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  border-radius: 100px;
+  background: var(--switch-bg);
+  z-index: 0;
+  position: relative;
+  align-items: center;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+
+.switch::before {
+  content: "";
+  display: block;
+  background: var(--switch-circle-bg);
+  width: var(--switch-circle-size);
+  height: var(--switch-circle-size);
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  left: var(--switch-circle-padding);
+  -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -moz-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -ms-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -o-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+input[type="checkbox"]:checked ~ .switch {
+  background-color: var(--switch-on-bg);
+}
+
+input[type="checkbox"]:checked ~ .switch::before {
+  background-color: var(--switch-circle-on-bg);
+  left: calc(
+    (var(--switch-width) - var(--switch-circle-size)) -
+      var(--switch-circle-padding)
+  );
+}
